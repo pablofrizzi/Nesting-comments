@@ -2,16 +2,13 @@ $(document).ready(main);
 
 function main() {
     
-   commentButton.on('click', showCommentForm); 
-   publishButton.on('click', renderComment);
+   $('.comment-btn').one('click', showCommentForm); 
+   commentContainer.on('click', '.publish-btn', renderComment);
     
     
 }
 
-
-var commentButton = $('.comment-btn');
-var publishButton = $(commentFormTemplate).find('.publish-btn');
-
+var commentContainer = $('.comment-container');
 
 
 function showCommentForm() {
@@ -25,10 +22,12 @@ function showCommentForm() {
 function renderComment() {
     var comment = $(commentTemplate);
     var commentForm = $(commentFormTemplate);
+    var commentContainer = $('.comment-container');
     
     comment.find('.user-name').text(commentForm.find('.name').val() + ' writes:');
     comment.find('.user-comment').text(commentForm.find('.comment').val());
-    comment.appendTo('.comment-container');
+    comment.appendTo(commentContainer);
+    comment.fadeIn();
     
     commentForm.fadeOut();
     
@@ -40,7 +39,7 @@ var commentFormTemplate = `
         <input class="name form-control">
         <label for="comment">Comment:</label>
         <textarea class="comment form-control"></textarea>
-        <button type="button" class="publish-btn btn btn-default">Publish</button>
+        <button type="button" class="btn btn-default publish-btn">Publish</button>
     </div>
 `;
 
@@ -48,6 +47,6 @@ var commentTemplate = `
     <div class="comment-publish">
         <h2 class="user-name"></h2>
         <p class="user-comment"></p>
-        <button type="button" class="comment-btn btn btn-default">Comment</button>
+        <button type="button" class="btn btn-default comment-btn">Comment</button>
     </div>
 `;
