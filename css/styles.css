@@ -1,0 +1,32 @@
+
+.article {
+    border: 1px solid #eee;
+    padding: 15px 25px;
+/*    max-width: 600px;*/
+    margin: 0 auto;
+}
+
+.article p {
+    
+}
+
+.comment-form {
+    padding: 15px 25px;
+    margin: 20px auto;
+    display: none;
+}
+
+.comment-publish {
+    border: 1px solid #eee;
+    padding: 15px 25px;
+    max-width: 550px;
+    display: none;
+}
+
+.publish-btn {
+    margin-top: 10px;
+}
+
+.comment-publish h2 {
+    font-size: 16px;   
+}
