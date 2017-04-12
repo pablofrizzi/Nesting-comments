@@ -9,27 +9,48 @@ function main() {
 var article = $('.article');
 var commentContainer = $('.comment-container');
 
+function createCommentForm() {
+    
+    var template = {
+        
+        commentFormDiv : "$('<div>').addClass('comment-form form-group')",
+        commentFormNameLabel : "$('<label>').text('Your name:')",   
+        commentFormInput : "$('<input>').addClass('name form-control')",
+        commentFormTextLabel : "$('<label>').text('Comment:')",
+        commentFormTextArea : "$('<textarea>').addClass('comment form-control')",
+        commentFormPublishBtn : "$('<button>').text('Publish').addClass('btn btn-default publish-btn')"
+        
+    };
+    
+    template.commentFormDiv.append(template.commentFormNameLabel);
+    template.commentFormDiv.append(template.commentFormInput);
+    template.commentFormDiv.append(template.commentFormTextLabel);
+    template.commentFormDiv.append(template.commentFormTextArea);
+    template.commentFormDiv.append(template.commentFormPublishBtn);
+    
+}
 
 function showCommentForm() {
     
-    var commentFormDiv = $('<div>').addClass('comment-form form-group');
-    var commentFormNameLabel = $('<label>').text('Your name:');   
-    var commentFormInput = $('<input>').addClass('name form-control');
-    var commentFormTextLabel = $('<label>').text('Comment:');
-    var commentFormTextArea = $('<textarea>').addClass('comment form-control');
-    var commentFormPublishBtn = $('<button>').text('Publish')
-                                             .addClass('btn btn-default publish-btn');
+//    var commentFormDiv = $('<div>').addClass('comment-form form-group');
+//    var commentFormNameLabel = $('<label>').text('Your name:');   
+//    var commentFormInput = $('<input>').addClass('name form-control');
+//    var commentFormTextLabel = $('<label>').text('Comment:');
+//    var commentFormTextArea = $('<textarea>').addClass('comment form-control');
+//    var commentFormPublishBtn = $('<button>').text('Publish')
+//                                             .addClass('btn btn-default publish-btn');
+//    
+//    
+//    commentFormDiv.append(commentFormNameLabel);
+//    commentFormDiv.append(commentFormInput);
+//    commentFormDiv.append(commentFormTextLabel);
+//    commentFormDiv.append(commentFormTextArea);
+//    commentFormDiv.append(commentFormPublishBtn);
     
-    
-    commentFormDiv.append(commentFormNameLabel);
-    commentFormDiv.append(commentFormInput);
-    commentFormDiv.append(commentFormTextLabel);
-    commentFormDiv.append(commentFormTextArea);
-    commentFormDiv.append(commentFormPublishBtn);
-    
+    createCommentForm();
 
-    commentFormDiv.appendTo('.article');
-    commentFormDiv.fadeIn();
+    template.commentFormDiv.appendTo('.article');
+    template.commentFormDiv.fadeIn();
 
 
     $('.publish-btn').on('click', renderComment);
