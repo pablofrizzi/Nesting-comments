@@ -37,13 +37,7 @@ function renderComment(name, text, hostEl) {
    
     comment.fadeIn();
     commentForm.fadeOut();
-    
-    comment.find('.comment-btn').on('click', function(){
-       
-        showCommentForm(article.find('.comment-publish'));
-         
-    });
-       
+           
 }
 
 var commentFormTemplate = `
