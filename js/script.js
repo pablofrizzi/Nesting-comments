@@ -18,10 +18,13 @@ function showCommentForm(hostEl) {
     commentForm.fadeIn();        
             
     commentForm.find('.publish-btn').on('click', function() {
-    	
-    	renderComment(commentForm.find('.name').val() + ' writes:',               commentForm.find('.comment').val(),
-            $(this).parent().parent());
-            console.log(this);
+    
+    var name = commentForm.find('.name').val() + ' writes:';
+    var text = commentForm.find('.comment').val();
+    var hostEl = $(this).parent().parent();
+        
+    	renderComment(name, text, hostEl);
+        
     });
         
 }
@@ -29,14 +32,13 @@ function showCommentForm(hostEl) {
 function renderComment(name, text, hostEl) {
       
     var comment = $(commentTemplate);
-    var commentForm = $('.comment-form');
         
     comment.find('.user-name').text(name);
     comment.find('.user-comment').text(text);
     comment.appendTo(hostEl);
    
     comment.fadeIn();
-    commentForm.fadeOut();
+    $('.comment-form').fadeOut();
            
 }
 
