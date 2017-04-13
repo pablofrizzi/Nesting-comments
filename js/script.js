@@ -3,13 +3,12 @@ $(document).ready(main);
 function main() {
     
    article.on('click', '.comment-btn', function(){
-   		showCommentForm('.article');
+   		showCommentForm($(this).parent());
    }); 
     
 }
 
 var article = $('.article');
-var commentContainer = $('.comment-container');
 
 function showCommentForm(hostEl) {
      
@@ -20,8 +19,9 @@ function showCommentForm(hostEl) {
             
     commentForm.find('.publish-btn').on('click', function() {
     	
-    	renderComment(commentForm.find('.name').val() + ' writes:', commentForm.find('.comment').val(), commentContainer);
-        
+    	renderComment(commentForm.find('.name').val() + ' writes:',               commentForm.find('.comment').val(),
+            $(this).parent().parent());
+            console.log(this);
     });
         
 }
@@ -29,18 +29,18 @@ function showCommentForm(hostEl) {
 function renderComment(name, text, hostEl) {
       
     var comment = $(commentTemplate);
-    var commentContainer = $('.comment-container');
     var commentForm = $('.comment-form');
         
     comment.find('.user-name').text(name);
     comment.find('.user-comment').text(text);
     comment.appendTo(hostEl);
+   
     comment.fadeIn();
     commentForm.fadeOut();
     
     comment.find('.comment-btn').on('click', function(){
        
-        showCommentForm(commentContainer.find('.comment-publish'));
+        showCommentForm(article.find('.comment-publish'));
          
     });
        
