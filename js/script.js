@@ -3,14 +3,14 @@ $(document).ready(main);
 function main() {
     
    article.on('click', '.comment-btn', function(){
-   		showCommentForm($(this).parent());
+   		appendCommentForm($(this).parent());
    }); 
     
 }
 
 var article = $('.article');
 
-function showCommentForm(hostEl) {
+function appendCommentForm(hostEl) {
      
     var commentForm = $(commentFormTemplate);
          
@@ -23,13 +23,13 @@ function showCommentForm(hostEl) {
     var text = commentForm.find('.comment').val();
     var hostEl = $(this).parent().parent();
         
-    	renderComment(name, text, hostEl);
+    	getArguments(name, text, hostEl);
         
     });
         
 }
 
-function renderComment(name, text, hostEl) {
+function getArguments(name, text, hostEl) {
       
     var comment = $(commentTemplate);
         
@@ -38,7 +38,7 @@ function renderComment(name, text, hostEl) {
     comment.appendTo(hostEl);
    
     comment.fadeIn();
-    $('.comment-form').fadeOut();
+    $('.comment-form').hide();
            
 }
 
